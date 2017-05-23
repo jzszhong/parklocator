@@ -19,7 +19,7 @@
 }
 
 #location {
-	height: 17%;
+	height: 120px;
 	background-color: #E9EBEE;
 	padding-left: 10px;
 	padding-right: 5px;
@@ -35,6 +35,10 @@
 	text-align: left;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.latlon {
+	visibility: hidden;
 }
 
 #searchTitle {
@@ -58,7 +62,7 @@
 	border-radius: 15px;
 }
 
-#search input[list] {
+#search select {
 	width: 70%;
 	font-size: 15pt;
 	margin-top: 10px;

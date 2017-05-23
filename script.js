@@ -10,6 +10,8 @@ function showPosition(position) {
 	mapForSearch(position.coords.latitude, position.coords.longitude);
 	getAddress(position.coords.latitude, position.coords.longitude);
 	
+	document.getElementsByName("lat")[0].value = position.coords.latitude;
+	document.getElementsByName("lon")[0].value = position.coords.longitude;
 	enableSearchNearParksButton();
 }
 
@@ -75,16 +77,65 @@ function showError(error) {
 function searchValidation() {
 	var valid;
 	var suburb = document.getElementsByName("suburb")[0];
-	var park = document.getElementsByName("park")[0];
+	var park = document.getElementsByName("parkId")[0];
 	var minRating = document.getElementsByName("min rating")[0];
 	
 	if (suburb.value == "" && park.value == "" && minRating.value == "") {
 		window.alert("You at least need to select one of the options to search");
 		valid = false;
 	}
-	else valid = false;
+	else valid = true;
 	
 	return valid;
+}
+
+function hideUnmatchedParkOptions() {
+	var suburbs = document.getElementsByName("suburb")[0];
+	var suburb = suburbs.options[suburbs.selectedIndex].value;
+	var parkOptions = document.getElementsByName("parkId")[0].options;
+	
+	for (var i = 0; i < parkOptions.length; i++) {
+		if (suburb == "") {
+			parkOptions[i].disabled = false;
+			parkOptions[i].hidden = false;
+		}
+		else {
+			if (parkOptions[i].className != suburb && parkOptions[i].value != "") {
+				parkOptions[i].disabled = true;
+				parkOptions[i].hidden = true;
+				parkOptions[i].selected = false;
+			}
+			else {
+				parkOptions[i].disabled = false;
+				parkOptions[i].hidden = false;
+			}
+		}
+	}
+}
+
+function hideUnmatchedSuburbOptions() {
+	var suburbOptions = document.getElementsByName("suburb")[0].options;
+	var park = document.getElementsByName("parkId")[0];
+	var parkIndex = park.selectedIndex;
+	var selectedSuburb = park.options[parkIndex].className;
+	
+	for (var i = 0; i < suburbOptions.length; i++) {
+		if (park.value == "") {
+			suburbOptions[i].disabled = false;
+			suburbOptions[i].hidden = false;
+		}
+		else {
+			if (suburbOptions[i].value != selectedSuburb && suburbOptions[i].value != "") {
+				suburbOptions[i].disabled = true;
+				suburbOptions[i].hidden = true;
+				suburbOptions[i].selected = false;
+			}
+			else {
+				suburbOptions[i].disabled = false;
+				suburbOptions[i].hidden = false;
+			}
+		}
+	}
 }
 
 function reviewValidation() {
@@ -292,3 +343,45 @@ function ResmyMap(){
 			  var marker = new google.maps.Marker({position:park3});
 			  marker.setMap(map);
 			}	
+			
+function mapForRes() {
+	var rawLatLon = document.getElementsByClassName("resultRows");
+	//var latLon = rawLatLon.split(",");
+	//declaring variables containing the coordinates for both the centre, and the hard coded parks
+	var centerlat = (rawLatLon[0].id.split(","))[0];
+	var centerlng = (rawLatLon[0].id.split(","))[1];
+	var myCenter = new google.maps.LatLng(centerlat,centerlng);
+	//set the map into the div with id "mapres"
+	var mapCanvas = document.getElementById("mapres");
+	var mapOptions = {center: myCenter, zoom: 15};
+	var map = new google.maps.Map(mapCanvas, mapOptions);
+	
+	for (var i = 0; i < rawLatLon.length; i++) {
+		var park = {lat: (rawLatLon[i].id.split(","))[0] * 1, lng: (rawLatLon[i].id.split(","))[1] * 1};
+		var marker = new google.maps.Marker({position:park});
+		marker.setMap(map);
+	}
+}
+
+/*
+function getItemImg(var latlon) {
+	var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+	document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
+*/
+
+function mapForItem(lat, lon) {
+	//var rawLatLon = document.getElementsByClassName("distance")[0].id;
+	
+	var centerlat = lat;
+	var centerlng = lon;
+	
+	var myCenter = new google.maps.LatLng(centerlat,centerlng);
+	var mapCanvas = document.getElementById("itemMap");
+	var mapOptions = {center: myCenter, zoom: 15};
+	var map = new google.maps.Map(mapCanvas, mapOptions);
+	
+	var park = {lat: centerlat, log: centerlng};
+	var marker = new google.maps.Marker({position:park});
+	marker.setMap(map);
+}
