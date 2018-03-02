@@ -102,8 +102,8 @@
 			</div>
 			
 			<div id="menu">
-				<a href="">Home</a>
-				<a class= "active" href="">Search</a>
+				<a href="home.php">Home</a>
+				<a class="active" href="">Search</a>
 				<a href="">Login</a>
 				<a href="Registration.html">Register</a>
 			</div>
@@ -122,7 +122,7 @@
 						<input type="text" name="lon" hidden>
 					</div>
 					
-					<input type="submit" name="search near parks" value="Search near parks" disabled>
+					<input type="submit" id="nearSearch" name="search near parks" value="Search near parks" disabled>
 					</form>
 					<br>
 					<br>
@@ -149,7 +149,10 @@
 							?>
 						</select>
 						<br><br>
-						<input type="submit" value="Search">
+						<input type="text" name="opLat" hidden>
+						<input type="text" name="opLon" hidden>
+						
+						<input type="submit" id="optionSearch" value="Search">
 					</fieldset>
 					</form>
 				</div>

@@ -1,6 +1,7 @@
 <?php
 	
-	$pdo = new PDO('mysql:host=localhost;dbname=localdb', 'azure', '6#vWHD_$');
+	//$pdo = new PDO('mysql:host=localhost;dbname=n9674985', 'n9674985', 'zzs123456');
+	$pdo = new PDO('mysql:host=localhost;dbname=parks', 'parkReader', 'zzs123456');
 	
 	// The algorithm to calculate the distance between two locations in kilometres
 	function getDistance($lat1, $lon1, $lat2, $lon2) {
@@ -33,7 +34,7 @@
 	// Calculate the average rating of an item
 	function getRating($id) {
 		global $pdo;
-		$ratings = $pdo->query('SELECT rating FROM reviews WHERE itemid = '. $id .';');
+		$ratings = $pdo->query('SELECT rating FROM parks.reviews WHERE itemid = '. $id .';');
 		$numRatings = count($ratings);
 		
 		if ($numRatings == 0) return 0;
@@ -207,14 +208,10 @@
 
 	<head>
 	
-		<link href="CSS/style.css" rel="stylesheet" type="text/css"/>
-		<link href="CSS/resStyle.css" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="JS/resultScript.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css"/>
+		<link href="resStyle.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="resultScript.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gFjy8jz6k01nXpBTFU7HBZR02TXNK1Y&callback=mapForRes"></script>
-		<title>
-			Results
-		</title>
-	
 	
 	</head>
 	
@@ -235,8 +232,8 @@
 			<div id="menu">
 				<a href="home.php">Home</a>
 				<a class= "active" href="search.php">Search</a>
-				<a href="Login.php">Login</a>
-				<a href="Registration.php">Register</a>
+				<a href="">Login</a>
+				<a href="Registration.html">Register</a>
 			</div>
 			
 			<div id = "contentres">

@@ -29,8 +29,12 @@
 }
 
 #itemMap {
-	height: 200px;
-	width: 450px;;
+	height: 35%;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 5%;
+	box-shadow: 0px 0px 100px #D2D2D2;
 }
 
 #item img {

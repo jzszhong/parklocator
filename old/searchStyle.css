@@ -62,6 +62,15 @@
 	border-radius: 15px;
 }
 
+#search input[list] {
+	width: 70%;
+	height: 20px;
+	font-size: 15pt;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow: auto;
+}
+
 #search select {
 	width: 70%;
 	font-size: 15pt;
@@ -69,7 +78,7 @@
 	margin-bottom: 10px;
 }
 
-#search button {
+#nearSearch {
 	color: white;
 	font-size: 16pt;
 	font-weight: bold;
@@ -82,7 +91,7 @@
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-#search input[type=submit] {
+#optionSearch {
 	color: white;
 	font-size: 16pt;
 	font-weight: bold;

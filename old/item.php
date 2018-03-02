@@ -1,19 +1,21 @@
 <?php
-
+//JASONS
 	session_start();
-	$pdo = new PDO('mysql:host=localhost;dbname=localdb', 'azure', '6#vWHD_$');
+	//$pdo = new PDO('mysql:host=localhost;dbname=n9674985', 'n9674985', 'zzs123456');
+	//$pdo = new PDO('mysql:host=localhost;dbname=assignment1', 'min', 'Secret!');
+	$pdo = new PDO('mysql:host=localhost;dbname=parks', 'parkReader', 'zzs123456');
 	
 	$_SESSION["park id"] = $_GET['id'];
 	
 	function showReviews() {
 		global $pdo;
-		$results = $pdo->query('SELECT * FROM reviews WHERE itemid = '. $_GET['id'] .';');
+		$results = $pdo->query('SELECT * FROM parks.reviews WHERE itemid = '. $_GET['id'] .';');
 		
 		if (count($results) == 0) echo '<h3>No review for this park yet</h3>';
 		else {
 			foreach ($results as $result) {
 				echo '<div>';
-				echo '<h4>User: '. $result['username'] .' &nbsp; &nbsp; &nbsp; &nbsp; Rating: '. $result['rating'] .' / 5</h4>';
+				echo '<h4>User: '. $result['username'] .' &nbsp &nbsp &nbsp &nbsp Rating: '. $result['rating'] .' / 5</h4>';
 				echo $result['review'];
 				echo '</div>';
 			}
@@ -23,7 +25,7 @@
 	// Calculate the average rating of an item
 	function getRating($id) {
 		global $pdo;
-		$ratings = $pdo->query('SELECT rating FROM reviews WHERE itemid = '. $id .';');
+		$ratings = $pdo->query('SELECT rating FROM parks.reviews WHERE itemid = '. $id .';');
 		$numRatings = count($ratings);
 		
 		if ($numRatings == 0) return 0;
@@ -68,15 +70,11 @@
 
 	<head>
 	
-		<link href="CSS/style.css" rel="stylesheet" type="text/css"/>
-		<link href="CSS/itemStyle.css" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="JS/script.js"></script>
-		<script type="text/javascript" src="JS/itemScript.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css"/>
+		<link href="itemStyle.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="itemScript.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6gFjy8jz6k01nXpBTFU7HBZR02TXNK1Y&callback=mapForItem"></script>
-		<title>
-			Item
-		</title>
-		
 	
 	</head>
 	
@@ -96,8 +94,8 @@
 			<div id="menu">
 				<a href="home.php">Home</a>
 				<a class= "active" href="search.php">Search</a>
-				<a href="Login.php">Login</a>
-				<a href="Registration.php">Register</a>
+				<a href="">Login</a>
+				<a href="Registration.html">Register</a>
 			</div>
 			
 			<div id="main" >
@@ -106,7 +104,15 @@
 					
 					<div id="reviewsContent">
 						<?php
+						require 'itemFunctions.php';
+						//displayReviews();
 						showReviews();
+						
+						
+						
+						
+						
+						
 						?>
 					</div>
 					
@@ -119,11 +125,17 @@
 							<span>Your rating to this park: </span>
 							<select name="rate">
 								<option value="" disabled selected hidden></option>
-								<?php
-									for ($i = 0; $i <= 5; $i += 0.5) {
-										echo '<option value="'. $i .'">'. $i .'</option>';
-									}
-								?>
+								<option value="0">0</option>
+								<option value="0.5">0.5</option>
+								<option value="1">1</option>
+								<option value="1.5">1.5</option>
+								<option value="2">2</option>
+								<option value="2.5">2.5</option>
+								<option value="3">3</option>
+								<option value="3.5">3.5</option>
+								<option value="4">4</option>
+								<option value="4.5">4.5</option>
+								<option value="5">5</option>
 							</select>
 							<span> / 5</span>
 						</div>

@@ -1,3 +1,10 @@
+/** contains formatting consistant across all pages of the website**/
+body {
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+/** centers the content of the page **/
 #wrapper {
 	text-align: center;
 	font-family: sans-serif;
@@ -19,7 +26,7 @@
 	background-color: #0068DB;
 	overflow: hidden;
 }
-
+/** formatting for the links in the menu bar **/
 #menu a {
 	width :20%;
 	padding-top: 15px; 
@@ -34,12 +41,12 @@
     text-decoration: none;
 	display: inline-block;
 }
-
+/** formatting for making the active page a different colour in the menu bar **/
 #menu a.active{
 	background-color: #4CAF50;
 	color: white;
 }
-
+/** formatting for making a menu link being hovered on a different colour if it is not the active page **/
 #menu a:hover:not(.active) {
 	background-color: #555;
 	color: white;
@@ -71,4 +78,19 @@
 	bottom: 0px;
 	height: 160px;
 	width: 100%;
+}
+/** formatting for the logout button. Is only visible when the user is loggeed in **/
+#header button {
+	width: 120px;
+	color: white;
+	font-size: 16pt;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 7px;
+	background-color: #31FF98;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	float: right;
+
+
 }

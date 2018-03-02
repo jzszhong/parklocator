@@ -1,5 +1,5 @@
-#contentreg {
-			
+#contentLogin {
+			height: 650px;
 			margin-top: 0;
 			text-align: center;
 			
@@ -11,19 +11,27 @@
 	border-right: 1px solid #D2D2D2;
 	box-shadow: 0px 0px 100px #D2D2D2;
 }
-#contentreg p {
+
+#contentLogin p {
 	background-color: #31FF98;
 	color: white;
-	font-size: 25pt;
+	font-size: 30pt;
 	font-weight: bold;
 	padding: 2%;
 	margin: 0px;
 	margin-bottom: 2%;
 }
-#contentreg label {
+
+#contentLogin h2 {
+	color: #0068DB;
+	font-weight: normal;
+	font-style: italic;
+}
+
+#contentLogin label {
 			font-size: 14pt;
 }
-#contentreg input[type=text]{
+#contentLogin input[type=text]{
 			box-sizing: border-box;
 			border: 2px solid black;
 			padding: 12px 20px;
@@ -31,7 +39,7 @@
 			margin: 8px 0;
 			border-radius:4px;
 }
-#contentreg input[type=password]{
+#contentLogin input[type=password]{
 			box-sizing: border-box;
 			border: 2px solid black;
 			padding: 12px 20px;
@@ -39,7 +47,7 @@
 			margin: 8px 0;
 			border-radius:4px;
 }
-#contentreg input[type=date]{
+#contentLogin input[type=date]{
 			box-sizing: border-box;
 			border: 2px solid black;
 			padding: 12px 20px;
@@ -47,7 +55,7 @@
 			margin: 8px 0;
 			border-radius:4px;
 }
-#contentreg input[type=submit]{
+#contentLogin input[type=submit]{
 	color: white;
 	font-weight: bold;
 		font-size:24px;
