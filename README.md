@@ -1,0 +1,1 @@
+This project was pushed as a whole because the original repo in Bitbucket has been deleted due to the shortage of space of the account. Google map may not work correctly as they have changed the way the API is used.
